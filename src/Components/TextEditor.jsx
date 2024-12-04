@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom';
 const TextEditor = () => {
 
     const {id} = useParams();
+    const [userCount, setUserCount] = useState(0);
     const [socket, setSocket] = useState(null);
     const [quill, setQuill] = useState(null);
 
@@ -41,12 +42,18 @@ const editorWrapper = useCallback((wrapper) =>{
     quillInstance.setText('Loading...')
     setQuill(quillInstance);
 }, [])
+    useEffect(() => {
+        if (!socket || !quill) return;
+        socket.on('total-user', totalUsers => {
+            setUserCount(totalUsers);
+        })
+    }, [socket, quill, id])
     // Getting document data or Creating it 
     useEffect(() => {
         if (!socket || !quill) return;
-        socket.once('load-document', documentData => {
-            console.log(documentData);
-            quill.setContents(documentData)
+        socket.once('load-document', document => {
+            quill.setContents(document.data)
+            setUserCount(document.users);
             quill.enable();
         })
         socket.emit('get-document', id)
@@ -59,41 +66,9 @@ const editorWrapper = useCallback((wrapper) =>{
         }, 2000)
         return () => clearInterval(interval)
     }, [socket, quill])
-    // Initialize the Quill editor
-    // useEffect(() => {
-    //     const editor = document.createElement('div');
-    //     editorWrapper.current.append(editor);
-    //     const quillInstance = new Quill(editor, {
-    //         theme: 'snow',
-    //         modules: {
-    //             toolbar: [
-    //                 ['bold', 'italic', 'underline', 'strike'],
-    //                 ['blockquote', 'code-block'],
-    //                 [{ 'header': 1 }, { 'header': 2 }],
-    //                 [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-    //                 [{ 'script': 'sub' }, { 'script': 'super' }],
-    //                 [{ 'indent': '-1' }, { 'indent': '+1' }],
-    //                 [{ 'direction': 'rtl' }],
-    //                 [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-    //                 [{ 'color': [] }, { 'background': [] }],
-    //                 [{ 'font': [] }],
-    //                 [{ 'align': [] }],
-    //                 ['clean'],
-    //                 ['link', 'image', 'video'],
-    //             ]
-    //         }
-    //     })
-    //     quillInstance.disable()
-    //     quillInstance.setText('Loading...')
-    //     setQuill(quillInstance);
-    //     return () => {
-    //         editorWrapper.current.innerHTML = '';
-    //     }
-    // }, []);
-    
-    // initialize the socket
     useEffect(() => {
-        const socketInstance = io('backedcollaborativetextedior-production.up.railway.app');
+        // const socketInstance = io('http://localhost:3000', {query:{id}});
+        const socketInstance = io('backedcollaborativetextedior-production.up.railway.app', {query:{id}});
         setSocket(socketInstance)
         socketInstance.on('connect', () => {
           console.log('Connected to server');
@@ -137,6 +112,7 @@ const editorWrapper = useCallback((wrapper) =>{
     <div className='editor-container' ref={editorWrapper}>
     </div>
     <button id='printBtn' onClick={() => window.print()}>Print</button>
+    <button id='counter'>{userCount}</button>
     </>
   )
 }

@@ -67,6 +67,9 @@ body {
     #printBtn {
         display: none;
     }
+    #counter {
+        display: none;
+    }
 }
 #printBtn {
     position: fixed;
@@ -82,3 +85,15 @@ body {
 #printBtn:hover {
     background-color: rgb(48, 48, 230);
 }
+#counter {
+    position: fixed;
+    bottom: 2%;
+    left: 2%;
+    background-color: rgb(236, 40, 40);
+    padding: 7px 20px;
+    color: #f3f3ff;
+    font-size: 20px;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
