@@ -64,7 +64,7 @@ const TextEditor = () => {
     
     // initialize the socket
     useEffect(() => {
-        const socketInstance = io('http://localhost:3000');
+        const socketInstance = io('backedcollaborativetextedior-production.up.railway.app');
         setSocket(socketInstance)
         socketInstance.on('connect', () => {
           console.log('Connected to server');
