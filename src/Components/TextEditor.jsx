@@ -13,7 +13,7 @@ const TextEditor = () => {
 
 const editorWrapper = useCallback((wrapper) =>{
     if (wrapper == null) return
-    wrapper.innerHTML = '';
+    wrapper?.innerHTML = '';
     const editor = document.createElement('div');
     wrapper.append(editor);
     const quillInstance = new Quill(editor, {
