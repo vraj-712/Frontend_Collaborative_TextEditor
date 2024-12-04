@@ -49,6 +49,7 @@ const editorWrapper = useCallback((wrapper) =>{
             setUserCount(totalUsers);
         })
     }, [socket, quill, id])
+
     // Getting document data or Creating it 
     useEffect(() => {
         if (!socket || !quill) return;
@@ -101,6 +102,7 @@ const editorWrapper = useCallback((wrapper) =>{
 
         const handler = (delta) => {
             quill.updateContents(delta);
+            quill.setSelection(quill.getLength());
         }
         socket.on('receive-changes', handler)
         return () => {
