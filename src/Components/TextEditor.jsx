@@ -3,13 +3,11 @@ import Quill from 'quill'
 import "./TextEditor.css"
 import "quill/dist/quill.snow.css";
 import { io } from 'socket.io-client';
-import { useParams, useNavigate} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 const TextEditor = () => {
-    const navigate = useNavigate();
+
     const {id} = useParams();
-    useEffect(() => {
-        navigate(`/dcocument/${id}`);
-    },[])
     const [socket, setSocket] = useState(null);
     const [quill, setQuill] = useState(null);
 
