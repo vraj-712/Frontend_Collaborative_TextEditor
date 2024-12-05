@@ -132,11 +132,14 @@ const TextEditor = () => {
     document.body.removeChild(printContainer);
   }
   const addPageBreaks = (container) => {
-    const pageHeight = 0; // A4 size at 96 DPI (approx.)
+    const pageHeight = 1122; // A4 size at 96 DPI (approx.)
     const contentChildren = Array.from(container.children);
     let currentHeight = 0;
 
-    contentChildren.forEach((child) => {
+    contentChildren.forEach((child, index) => {
+        if(index == 0) {
+            return
+        }
       const childHeight = child.offsetHeight;
       currentHeight += childHeight;
 
