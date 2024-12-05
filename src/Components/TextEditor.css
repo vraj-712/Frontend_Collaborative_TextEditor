@@ -41,7 +41,7 @@ body {
     font-size: 150px !important;
 }
 @page{
-    margin: 1in;
+    margin: 0.5in;
 }
 @media print {
     #print-container {
@@ -62,11 +62,10 @@ body {
         visibility: hidden;
     }
     .editor-container .ql-editor{
-        width: 6.5in;
-        height: 9in;
+        width: 8.27in;
+        height: 11.69in;
         padding:0;
-        box-shadow: none;
-        align-self: flex-start;
+        box-shadow: none;        align-self: flex-start;
         margin: 0;
     }
     a[href] {
