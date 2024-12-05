@@ -49,7 +49,7 @@ body {
         width: 100%;
       }
     
-      .page-break {
+      .custom-page-break {
         page-break-before: always;
       }
     *{

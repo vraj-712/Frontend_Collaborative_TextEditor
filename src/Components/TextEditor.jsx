@@ -137,16 +137,13 @@ const TextEditor = () => {
     let currentHeight = 0;
 
     contentChildren.forEach((child, index) => {
-        if(index == 0) {
-            return
-        }
       const childHeight = child.offsetHeight;
       currentHeight += childHeight;
 
       if (currentHeight > pageHeight) {
         // Insert a page-break div before this child
         const pageBreak = document.createElement("div");
-        pageBreak.className = "page-break";
+        pageBreak.className = "custom-page-break";
         container.insertBefore(pageBreak, child);
         currentHeight = childHeight; // Reset height counter
       }
