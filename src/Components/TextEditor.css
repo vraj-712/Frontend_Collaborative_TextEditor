@@ -44,15 +44,23 @@ body {
     margin: 1in;
 }
 @media print {
+    #print-container {
+        visibility: visible;
+        width: 100%;
+      }
+    
+      .page-break {
+        page-break-before: always;
+      }
     *{
         print-color-adjust: exact;
     }
     .editor-container .ql-toolbar.ql-snow{
         display: none !important;
     }
-    /* body {
-        background-color: none ! important;
-    } */
+    body {
+        visibility: hidden;
+    }
     .editor-container .ql-editor{
         width: 6.5in;
         height: 9in;
