@@ -58,9 +58,9 @@ body {
     .editor-container .ql-toolbar.ql-snow{
         display: none !important;
     }
-    body {
+    /* body {
         visibility: hidden;
-    }
+    } */
     .editor-container .ql-editor{
         width: 8.27in;
         height: 11.69in;

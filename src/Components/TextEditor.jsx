@@ -153,7 +153,7 @@ const TextEditor = () => {
   return (
     <>
       <div className="editor-container" ref={editorWrapper}></div>
-      <button id="printBtn" onClick={printWithPageBreak}>
+      <button id="printBtn" onClick={() => window.print()}>
         Print
       </button>
       <button id="counter">{userCount}</button>
