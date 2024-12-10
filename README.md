@@ -51,7 +51,7 @@ Welcome to the Collaborative Text Editor! This project is a real-time, cloud-bas
 - Open a Pull Request
 
 ## License
-- This project is licensed under the MIT License. See the [LICENSE](https://github.com/vraj-712/Backed_Collaborative_TextEdior/blob/main/LICENSE) file for details.
+- This project is licensed under the MIT License. See the [LICENSE](https://github.com/vraj-712/Frontend_Collaborative_TextEditor/blob/main/LICENSE) file for details.
 
 ## Acknowledgments
 - Thanks to the open-source community for their support and contributions!
