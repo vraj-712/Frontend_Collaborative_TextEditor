@@ -153,9 +153,9 @@ const TextEditor = () => {
   return (
     <>
       <div className="editor-container" ref={editorWrapper}></div>
-      <button id="printBtn" onClick={() => window.print()}>
+      {/* <button id="printBtn" onClick={() => window.print()}>
         Print
-      </button>
+      </button> */}
       <button id="counter">{userCount}</button>
     </>
   );
